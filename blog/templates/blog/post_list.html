@@ -11,10 +11,16 @@
     <title>Django Blog</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+   <div>
+    <h1><a href="#">Django Blog</a></h1>
+   </div>  
+    {% for post in posts%}
     <div>
-    <a href="#">My first Blog</a>
-    <p>こんにちは！ よろしくお願いします！</p>
+    <a>published :{{ post.published_date }}</a>
+    <p><a href="#"">{{ post.title }}</a></p>
+    <p>{{ post.text|linebreaksbr }}
+    </div> 
+    {% endfor %}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

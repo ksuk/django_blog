@@ -5,6 +5,7 @@
     {% if post.published_date %}
         {{ post.published_date }}
     {% endif %}
+    <button type="button" class="btn btn-danger" href="{% url "post_edit" pk=post.pk %}">編集</button>
     <h1>{{ post.title }}</h1>
     <p>{{ post.text|linebreaksbr|urlize }}</p>
 </div>    

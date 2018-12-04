@@ -1,0 +1,7 @@
+*.pyc
+*~
+__pycache__
+myvenv
+bd.sqlite3
+/startic
+.DS_Store

@@ -1,6 +1,8 @@
 {% extends 'blog/base.html' %}
+
 {% block content %}
   {% for post in posts %}
+  <div class="card">
     <div class="post">
       <p>{{ post.published_date }}</p>
       <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
@@ -8,5 +10,6 @@
       <small><a href="{% url "post_detail" pk=post.pk%}">{{ post.approved_comments.count }}件のコメント</a></small>
     </div>
     <br>
+    </div>
   {% endfor %}
 {% endblock  %}

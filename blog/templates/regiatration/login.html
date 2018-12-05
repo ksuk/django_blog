@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+{% if form.error %}
+ <p>ユーザー名またはパスワードが一致しませんでした。再度お試しください。</p>
+{% endif %}
+
+<form method="post" action="{% url "login"%}">
+{% csrf_token %}
+  <div class="form-group">
+    <label for="name">{{ form.username.label_tag }}</label>
+    <label for="name">{{ form.username }}</label>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">{{ form.password.label_tag }}</label>
+    <label for="exampleInputPassword1">{{ form.password }}</label>
+  </div>
+  <input type="submit" value="login">
+  <input type="hidden" name="next" value="{{ next }}">
+</form>
+
+{% endblock  %}

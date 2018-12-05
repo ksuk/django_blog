@@ -1,11 +1,12 @@
 {% extends 'blog/base.html' %}
 
-
 {% block content %}
-<h3>投稿</h3>
-<form method="POST">
-{% csrf_token %}
-{{ form.as_p}}
-<button type="submit" class="btn btn-primary">保存</button>
-</form>
+    <h3>投稿</h3>
+        <form method="POST">
+        <div class="form-group">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button type="submit" class="btn btn-primary">保存</button>
+            </div>
+        </form>
 {% endblock  %}

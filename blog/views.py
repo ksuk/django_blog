@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Post
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
+from django.shortcuts import redirect
 
 # Create your views here.
 
@@ -26,10 +27,10 @@ def post_new(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return render("post_detail", pk=post.pk)
-        else:
-            form = PostForm()
-            return render(request, "blog/post_edit.html", {'form': form})
+            return redirect("post_detail", pk=post.pk)
+    else:
+        form = PostForm()
+    return render(request, "blog/post_edit.html", {'form': form})
 
 
 def post_edit(request, pk):
@@ -42,6 +43,6 @@ def post_edit(request, pk):
             post.published_date = timezone.now()
             post.save()
             return redirect("post_detail", pk=post.pk)
-        else:
-            form = PostForm(insance=post)
-        return render(request, "blog/post_edit.html", {'form': form})
+    else:
+        form = PostForm(instance=post)
+    return render(request, "blog/post_edit.html", {'form': form})
